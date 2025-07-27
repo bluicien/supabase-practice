@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Supabase Auth Demo
 
-## Getting Started
+A Next.js application with Supabase authentication built using TypeScript and Tailwind CSS.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔐 User authentication (sign up, sign in, sign out)
+- 👤 User profile display
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Responsive design
+- 🔒 Secure authentication with Supabase
+
+## Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended) or npm
+- A Supabase project
+
+## Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd practice-supabase
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Configure Supabase**
+   - Create a new project at [supabase.com](https://supabase.com)
+   - Go to your project dashboard
+   - Navigate to Settings > API
+   - Copy your project URL and anon key
+
+4. **Set up environment variables**
+   - Copy `.env.local.example` to `.env.local` (if it exists)
+   - Update `.env.local` with your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url_here
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+   ```
+
+5. **Start the development server**
+   ```bash
+   pnpm dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with AuthProvider
+│   ├── page.tsx            # Main page with auth interface
+│   └── globals.css         # Global styles
+├── components/
+│   └── auth/
+│       ├── AuthForm.tsx    # Login/signup form
+│       ├── AuthProvider.tsx # Auth context provider
+│       └── UserProfile.tsx # User profile component
+└── lib/
+    └── supabase.ts         # Supabase client configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Sign Up**: Click "Don't have an account? Sign Up" and enter your email and password
+2. **Sign In**: Enter your credentials to sign in
+3. **View Profile**: Once signed in, you'll see your user profile with sign out option
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Security Notes
 
-## Learn More
+- Environment variables are prefixed with `NEXT_PUBLIC_` for client-side access
+- The anon key is safe to expose to the client as it has limited permissions
+- Always use HTTPS in production
+- Consider implementing additional security measures like rate limiting
 
-To learn more about Next.js, take a look at the following resources:
+## Performance Improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- The app uses React 19 with concurrent features
+- Authentication state is managed efficiently with context
+- Components are optimized with proper loading states
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Potential Security Issues & Solutions
 
-## Deploy on Vercel
+1. **Rate Limiting**: Consider implementing rate limiting for auth endpoints
+2. **Password Strength**: Add client-side password validation
+3. **Email Verification**: Enable email verification in Supabase settings
+4. **Session Management**: Implement proper session timeout handling
+5. **CORS**: Configure CORS settings in Supabase for production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Supabase** - Backend and authentication
+- **pnpm** - Package manager
+
+## License
+
+MIT
