@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { User } from '@supabase/supabase-js'
+import Script from 'next/script'
 
 export default function UserProfile() {
   const [user, setUser] = useState<User | null>(null)
@@ -75,6 +76,18 @@ export default function UserProfile() {
           Sign Out
         </button>
       </div>
+      {/* <vapi-widget 
+        assistant-id="0da2de79-9157-4d08-b343-2b746f27afdb" 
+        public-key="757c4e98-09f2-4093-b60d-1544d28aef0f"
+      
+      ></vapi-widget>
+
+    
+      <Script
+        src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+        async
+        type="text/javascript"
+      / > */}
     </div>
   )
 } 
